@@ -4,11 +4,11 @@ import { inter } from "@/config/fonts";
 
 export const metadata: Metadata = {
     title: "Teslo ~ Shop",
-    description: "Tienda Online De Productos",
+    description: "Tienda Online De Productos"
 };
 
 export default function RootLayout({
-    children,
+    children
 }: Readonly<{
     children: React.ReactNode;
 }>) {
@@ -18,3 +18,4 @@ export default function RootLayout({
         </html>
     );
 }
+
