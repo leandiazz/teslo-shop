@@ -1,6 +1,7 @@
 "use client";
 
 import { Product } from "@/interfaces";
+import { FormatPrice } from "@/store";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -41,9 +42,3 @@ export const ProductGridItem: React.FC<Product> = ({
     );
 };
 
-export const FormatPrice = (price: number) =>
-    price.toLocaleString("en-US", {
-        currency: "USD",
-        minimumFractionDigits: 1,
-        style: "currency"
-    });
