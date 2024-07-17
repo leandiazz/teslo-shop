@@ -2,14 +2,12 @@ import { QuantitySelector, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const productsInCart = [
-    initialData.products[0], 
-    initialData.products[1], 
-    initialData.products[2]
-];
+const productsInCart = [initialData.products[0], initialData.products[1], initialData.products[2]];
 
 export default function CartPage() {
+    if (productsInCart.length === 0) redirect("/empty");
     return (
         <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
             <div className="flex flex-col w-[1000px]">
@@ -21,33 +19,32 @@ export default function CartPage() {
                         <Link href="/" className="underline mb-5">
                             Continua comprando
                         </Link>
-                    
 
-                    {/* Items */}
-                    {productsInCart.map(product => (
-                        <div key={product.slug} className="flex mb-5">
-                            <Image
-                                src={`/products/${product.images[0]}`}
-                                width={100}
-                                height={100}
-                                alt={product.title}
-                                style={{
-                                    width: "100px",
-                                    height: "100px"
-                                }}
-                                className="mr-5 rounded object-contain"
-                            />
-                            <div>
-                                <p>{product.title}</p>
-                                <p>${product.price}</p>
-                                <QuantitySelector quantity={3} />
-                                <button type="button" className="underline mt-3">
-                                    Remover
-                                </button>
+                        {/* Items */}
+                        {productsInCart.map(product => (
+                            <div key={product.slug} className="flex mb-5">
+                                <Image
+                                    src={`/products/${product.images[0]}`}
+                                    width={100}
+                                    height={100}
+                                    alt={product.title}
+                                    style={{
+                                        width: "100px",
+                                        height: "100px"
+                                    }}
+                                    className="mr-5 rounded object-contain"
+                                />
+                                <div>
+                                    <p>{product.title}</p>
+                                    <p>${product.price}</p>
+                                    <QuantitySelector quantity={3} />
+                                    <button type="button" className="underline mt-3">
+                                        Remover
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-</div>
+                        ))}
+                    </div>
                     {/* Checkout */}
                     <div className="bg-white rounded-xl shadow-xl p-7">
                         <h2 className="text-xl mb-2">Resumen de orden</h2>
@@ -63,10 +60,12 @@ export default function CartPage() {
                             <span className="mt-5 text-2xl">Total</span>
                             <span className="mt-5 text-2xl text-right">$ 100</span>
                         </div>
-                       
-                       <div className="mt-5 mb-2 w-full">
-                        <Link href="/checkout/address" className="flex btn-primary justify-center">Checkout</Link>
-                       </div>
+
+                        <div className="mt-5 mb-2 w-full">
+                            <Link href="/checkout/address" className="flex btn-primary justify-center">
+                                Checkout
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
