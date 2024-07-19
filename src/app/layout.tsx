@@ -3,19 +3,18 @@ import type { Metadata } from "next";
 import { inter } from "@/config/fonts";
 
 export const metadata: Metadata = {
-    title: "Teslo ~ Shop",
-    description: "Tienda Online De Productos"
+  title: "Teslo ~ Shop",
+  description: "Tienda Online De Productos",
 };
 
 export default function RootLayout({
-    children
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={inter.className}>{children}</body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  );
 }
-

@@ -4,10 +4,10 @@ import { initialData } from "@/seed/seed";
 const products = initialData.products;
 
 export default function Home() {
-    return (
-        <main>
-            <Title title="Tienda" subtitle="Todos los productos" classname="mb-2" />
-            <ProductGrid products={products} />
-        </main>
-    );
+  return (
+    <main>
+      <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
+      <ProductGrid products={products} />
+    </main>
+  );
 }
