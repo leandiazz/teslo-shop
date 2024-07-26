@@ -11,17 +11,13 @@ async function main() {
   // 2. Generar nuevos registros
   const { categories, products } = initialData
 
-  const categoriesData = categories.map((cat) => ({
-    name: cat,
+  const categoriesData = categories.map((name) => ({
+    name,
   }))
 
-  console.log(categoriesData)
-
-  // await prisma.category.create({
-  //   data: {
-  //     name: "Shirts",
-  //   },
-  // })
+  await prisma.category.createMany({
+    data: categoriesData,
+  })
 
   console.log("seed ejecutado correctamente")
 }
