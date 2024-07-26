@@ -1,25 +1,27 @@
 interface SeedProduct {
-  description: string;
-  images: string[];
-  inStock: number;
-  price: number;
-  sizes: Size[];
-  slug: string;
-  tags: string[];
-  title: string;
-  type: Type;
-  gender: Categorie;
+  description: string
+  images: string[]
+  inStock: number
+  price: number
+  sizes: Size[]
+  slug: string
+  tags: string[]
+  title: string
+  type: Type
+  gender: Categorie
 }
 
-export type Categorie = "men" | "women" | "kid" | "unisex";
-export type Size = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
-export type Type = "shirts" | "pants" | "hoodies" | "hats";
+export type Categorie = "men" | "women" | "kid" | "unisex"
+export type Size = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL"
+export type Type = "shirts" | "pants" | "hoodies" | "hats"
 
 interface SeedData {
-  products: SeedProduct[];
+  categories: Type[]
+  products: SeedProduct[]
 }
 
 export const initialData: SeedData = {
+  categories: ["shirts", "pants", "hoodies", "hats"],
   products: [
     {
       description:
@@ -700,4 +702,4 @@ export const initialData: SeedData = {
       gender: "kid",
     },
   ],
-};
+}
