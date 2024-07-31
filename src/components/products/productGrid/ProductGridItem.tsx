@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { Product } from "@/interfaces";
-import { FormatPrice } from "@/store";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { Product } from "@/interfaces"
+import { FormatPrice } from "@/store"
+import Image from "next/image"
+import Link from "next/link"
+import { useState } from "react"
 
 export const ProductGridItem: React.FC<Product> = ({
   description,
@@ -16,9 +16,8 @@ export const ProductGridItem: React.FC<Product> = ({
   slug,
   tags,
   title,
-  type,
 }) => {
-  const [displayImage, setDisplayImage] = useState(images[0]);
+  const [displayImage, setDisplayImage] = useState(images[0])
   return (
     <div className="rounded-md overflow-hidden fade-in">
       <Link href={`/product/${slug}`}>
@@ -39,5 +38,5 @@ export const ProductGridItem: React.FC<Product> = ({
         <span className="font-bold">{FormatPrice(price)}</span>
       </div>
     </div>
-  );
-};
+  )
+}
