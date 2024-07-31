@@ -1,5 +1,5 @@
-import { titleFont } from "@/config/fonts"
-import Link from "next/link"
+import { titleFont } from "@/config/fonts";
+import Link from "next/link";
 
 export default function NewAccountPage() {
   return (
@@ -33,5 +33,5 @@ export default function NewAccountPage() {
         </Link>
       </div>
     </div>
-  )
+  );
 }

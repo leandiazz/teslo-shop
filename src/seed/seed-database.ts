@@ -1,5 +1,5 @@
-import { initialData } from "./seed"
-import prisma from "../lib/prisma"
+import { initialData, Type } from "./seed";
+import prisma from "../lib/prisma";
 
 async function main() {
   // 1. Borrar registros previos
@@ -7,22 +7,46 @@ async function main() {
     prisma.productImage.deleteMany(),
     prisma.product.deleteMany(),
     prisma.category.deleteMany(),
-  ])
+  ]);
+
   // 2. Generar nuevos registros
-  const { categories, products } = initialData
+  const { categories, products } = initialData;
 
   const categoriesData = categories.map((name) => ({
     name,
-  }))
+  }));
 
   await prisma.category.createMany({
     data: categoriesData,
-  })
+  });
 
-  console.log("seed ejecutado correctamente")
+  const categoriesDB = await prisma.category.findMany();
+
+  const categoriesMap = categoriesDB.reduce(
+    (acc: any, category: { name: string; id: any }) =>
+      (acc = { ...acc, [category.name.toLowerCase()]: category.id }),
+    {} as Record<Type, string>,
+  );
+
+  products.forEach(async (product) => {
+    const { type, images, ...rest } = product;
+    const dbProduct = await prisma.product.create({
+      data: {
+        ...rest,
+        categoryId: categoriesMap[type],
+      },
+    });
+
+    const imagesData = images.map((image) => ({
+      url: image,
+      productId: dbProduct.id,
+    }));
+
+    await prisma.productImage.createMany({ data: imagesData });
+  });
 }
 
-;(() => {
-  if (process.env.NODE_ENV == "production") return
-  main()
-})()
+(() => {
+  if (process.env.NODE_ENV == "production") return;
+  main();
+})();

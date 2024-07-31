@@ -10,7 +10,7 @@ export const NotFound = () => {
         <p className="font-semibold text-xl">Whooops! Lo sentimos mucho.</p>
         <p className="font-light">
           <span>
-            Puedes regresar al
+            Puedes regresar al{" "}
             <Link
               href="/"
               className="font-normal hover:underline transition-all"
