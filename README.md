@@ -1,6 +1,6 @@
 # Descripcion
 
-## Correr en dev
+## Ejecutar aplicacion en dev
 
 1. Clonar repositorio
 2. Crear una copia del ```.env.template``` y renombrarlo a ```.env``` y cambiar las variables de entorno.
